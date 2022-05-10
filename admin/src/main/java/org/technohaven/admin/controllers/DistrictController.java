@@ -27,7 +27,6 @@ import java.util.Map;
 import java.util.Set;
 
 @Controller
-//@RequestMapping("/{sectionKey:.+}")
 @RequestMapping("/" + DistrictController.SECTION_KEY)
 @Secured("ROLE_PERMISSION_OTHER_DEFAULT")
 public class DistrictController extends AdminBasicEntityController {
@@ -36,6 +35,15 @@ public class DistrictController extends AdminBasicEntityController {
     
 //    @Autowired
 //    protected DistrictService districtService;
+
+    @Override
+    protected String getSectionKey(Map<String, String> pathVars) {
+        //allow external links to work for ToOne items
+        if (super.getSectionKey(pathVars) != null) {
+            return super.getSectionKey(pathVars);
+        }
+        return DistrictController.SECTION_KEY;
+    }
 
     @Override
     @RequestMapping(value = "", method = RequestMethod.GET)
@@ -47,8 +55,8 @@ public class DistrictController extends AdminBasicEntityController {
     	
     	System.out.println(getSectionKey(pathVars)+" getSectionKey(pathVars)");
     	
-//        String sectionKey = getSectionKey(pathVars);
-        String sectionKey = DistrictController.SECTION_KEY;        
+        String sectionKey = getSectionKey(pathVars);
+//        String sectionKey = DistrictController.SECTION_KEY;
         String sectionClassName = getClassNameForSection(sectionKey);
         List<SectionCrumb> crumbs = getSectionCrumbs(request, null, null);
         PersistencePackageRequest ppr = getSectionPersistencePackageRequest(sectionClassName, requestParams, crumbs, pathVars);
