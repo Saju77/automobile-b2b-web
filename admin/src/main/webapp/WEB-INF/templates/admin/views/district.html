@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="twelve columns">
+        <form th:action="@{/district/addDistrict}" method="POST" style="padding-bottom: 20px">
+            <div class="container">
+                <h1>Save District</h1>
+
+<!--                <a th:href="@{/district/addDemo}">View Demo</a>-->
+
+<!--                <a th:href="@{/district/city2}">View city page</a>-->
+                <p>Please fill in this form to create a district.</p>
+                <hr>
+
+                <label for="district"><b>District Name : </b></label>
+                <input type="text" placeholder="Enter District Name" name="district" id="district" required>
+
+                <label for="dCode"><b>District Code : </b></label>
+                <input type="text" placeholder="Enter district code" name="dCode" id="dCode" required>
+
+                <hr>
+
+                <input type="submit" value="Save" class="savebtn"/>
+            </div>
+        </form>
+    </div>
+</div>

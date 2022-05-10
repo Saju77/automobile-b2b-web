@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- This file will contain bean overrides for extensions of Broadleaf entities -->
+    <!-- For example, if you have a custom class that extends CustomerImpl, you would note that here -->
+
+    <context:component-scan base-package="org.technohaven.admin.entities" />
+
+    <bean id="org.technohaven.admin.entities.District"
+          class="org.technohaven.admin.entities.DistrictImpl" scope="prototype" />
+
+    <bean id="org.technohaven.admin.entities.City"
+          class="org.technohaven.admin.entities.CityImpl" scope="prototype" />
+
+    <bean id="org.technohaven.admin.entities.Port"
+          class="org.technohaven.admin.entities.PortImpl" scope="prototype" />
+
+    <bean id="org.technohaven.admin.entities.Transmission"
+          class="org.technohaven.admin.entities.TransmissionImpl" scope="prototype" />
+
+    <bean id="org.technohaven.admin.entities.FuelType"
+          class="org.technohaven.admin.entities.FuelTypeImpl" scope="prototype" />
+
+    <bean id="org.technohaven.admin.entities.Color"
+          class="org.technohaven.admin.entities.ColorImpl" scope="prototype" />
+
+</beans>
