@@ -1,24 +1,23 @@
-<div class="row">
+<div class="row" style="margin-Left:5px">
     <div class="twelve columns">
-        <form th:action="@{/district/addDistrict}" method="POST" style="padding-bottom: 20px">
+        <a th:href="@{/city/cusCity}" style="color: white; background-color: green;">View city page</a>
+        <form action="#" th:action="@{/district/saveDistrict}" method="Post" style="padding-bottom: 20px">
             <div class="container">
                 <h1>Save District</h1>
-
-<!--                <a th:href="@{/district/addDemo}">View Demo</a>-->
-
-<!--                <a th:href="@{/district/city2}">View city page</a>-->
                 <p>Please fill in this form to create a district.</p>
                 <hr>
 
                 <label for="district"><b>District Name : </b></label>
-                <input type="text" placeholder="Enter District Name" name="district" id="district" required>
+                <input type="text" placeholder="Enter District Name" name="disName" id="disName" required>
 
                 <label for="dCode"><b>District Code : </b></label>
-                <input type="text" placeholder="Enter district code" name="dCode" id="dCode" required>
+                <input type="text" placeholder="Enter district code" name="disCode" id="disCode" required>
 
                 <hr>
-
                 <input type="submit" value="Save" class="savebtn"/>
+                <div>
+                    <p><strong>Note: </strong> This is just a demo page not form. We will create and handle form via customizing the Broadleaf Form</p>
+                </div>
             </div>
         </form>
     </div>

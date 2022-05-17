@@ -24,12 +24,14 @@
 
     <persistence-unit name="blPU" transaction-type="RESOURCE_LOCAL">
         <non-jta-data-source>jdbc/web</non-jta-data-source>
-        <class>org.technohaven.admin.entities.DistrictImpl</class>
-        <class>org.technohaven.admin.entities.CityImpl</class>
-        <class>org.technohaven.admin.entities.PortImpl</class>
-        <class>org.technohaven.admin.entities.TransmissionImpl</class>
-        <class>org.technohaven.admin.entities.FuelTypeImpl</class>
-        <class>org.technohaven.admin.entities.ColorImpl</class>
+        <mapping-file>META-INF/orm-xml/District.orm.xml</mapping-file>
+        <mapping-file>META-INF/orm-xml/City.orm.xml</mapping-file>
+        <class>org.technohaven.core.entities.DistrictImpl</class>
+        <class>org.technohaven.core.entities.CityImpl</class>
+        <class>org.technohaven.core.entities.PortImpl</class>
+        <class>org.technohaven.core.entities.TransmissionImpl</class>
+        <class>org.technohaven.core.entities.FuelTypeImpl</class>
+        <class>org.technohaven.core.entities.ColorImpl</class>
         <exclude-unlisted-classes/>
     </persistence-unit>
     

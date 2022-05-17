@@ -3,6 +3,7 @@ package org.technohaven.api;
 import org.broadleafcommerce.common.config.EnableBroadleafSiteRootAutoConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 /**

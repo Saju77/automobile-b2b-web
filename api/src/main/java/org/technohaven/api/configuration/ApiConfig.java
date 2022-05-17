@@ -8,7 +8,6 @@ import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactor
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-
 import org.technohaven.core.config.CoreConfig;
 import org.technohaven.core.config.StringFactoryBean;
 
@@ -54,5 +53,4 @@ public class ApiConfig {
         connector.setPort(port);
         return connector;
     }
-
 }
