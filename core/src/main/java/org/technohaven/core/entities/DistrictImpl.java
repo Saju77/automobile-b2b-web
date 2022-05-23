@@ -11,7 +11,8 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "DISTRICT")
-@AdminPresentationClass(friendlyName = "District")
+@Inheritance(strategy = InheritanceType.JOINED)
+@AdminPresentationClass(friendlyName = "DistrictImpl_District")
 public class DistrictImpl implements District{
 
     private static final Long serialVersionUID = 1L;
@@ -31,12 +32,12 @@ public class DistrictImpl implements District{
     protected Long id;
 
     @Column(name = "NAME", nullable = false)
-    @AdminPresentation(friendlyName = "Name", order = 1, prominent = true, gridOrder = 1)
+    @AdminPresentation(friendlyName = "DistrictImpl_District_Name", order = 1, prominent = true, gridOrder = 1)
     protected String name;
 
     @Column(name = "CODE", nullable = false)
-    @AdminPresentation(friendlyName = "Code", order = 2, prominent = true, gridOrder = 2)
-    protected String code;
+    @AdminPresentation(friendlyName = "DistrictImpl_District_Code", order = 2, prominent = true, gridOrder = 2)
+    protected int code;
 
     @Override
     public Long getId() {
@@ -59,12 +60,12 @@ public class DistrictImpl implements District{
     }
 
     @Override
-    public String getCode() {
+    public int getCode() {
         return code;
     }
 
     @Override
-    public void setCode(String code) {
+    public void setCode(int code) {
         this.code = code;
     }
 }

@@ -66,4 +66,32 @@
         <heap>10000</heap>
     </cache>
 
+    <cache alias="query.Port">
+        <expiry>
+            <ttl>600</ttl>
+        </expiry>
+        <heap>10000</heap>
+    </cache>
+
+    <cache alias="query.Transmission">
+        <expiry>
+            <ttl>600</ttl>
+        </expiry>
+        <heap>10000</heap>
+    </cache>
+
+    <cache alias="query.FuelType">
+        <expiry>
+            <ttl>600</ttl>
+        </expiry>
+        <heap>10000</heap>
+    </cache>
+
+    <cache alias="query.Color">
+        <expiry>
+            <ttl>600</ttl>
+        </expiry>
+        <heap>10000</heap>
+    </cache>
+
 </config>

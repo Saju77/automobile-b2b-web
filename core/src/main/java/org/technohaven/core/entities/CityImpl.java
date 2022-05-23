@@ -11,7 +11,8 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "CITY")
-@AdminPresentationClass(friendlyName = "City")
+@Inheritance(strategy = InheritanceType.JOINED)
+@AdminPresentationClass(friendlyName = "CityImpl_City")
 public class CityImpl implements City{
 
     private static final Long serialVersionUID = 1L;
@@ -31,17 +32,17 @@ public class CityImpl implements City{
 
     @ManyToOne(targetEntity = DistrictImpl.class, optional=false)
     @JoinColumn(name = "DISTRICT_ID")
-    @AdminPresentation(friendlyName = "DISTRICT", order = 1, prominent = true, gridOrder = 1)
+    @AdminPresentation(friendlyName = "CityImpl_City_District", order = 1, prominent = true, gridOrder = 1)
     @AdminPresentationToOneLookup()
     protected District districtId;
 
     @Column(name = "CITY_UPAZILA_NAME", nullable = false)
-    @AdminPresentation(friendlyName = "City/Upazila Name", order = 2, prominent = true, gridOrder = 2)
-    protected String cityUpazilaName;
+    @AdminPresentation(friendlyName = "CityImpl_City_City_Upazila_Name", order = 2, prominent = true, gridOrder = 2)
+    protected String name;
 
     @Column(name = "CITY_UPAZILA_CODE", nullable = false)
-    @AdminPresentation(friendlyName = "City/Upazila Code", order = 3, prominent = true, gridOrder = 3)
-    protected String cityUpazilaCode;
+    @AdminPresentation(friendlyName = "CityImpl_City_City_Upazila_Code", order = 3, prominent = true, gridOrder = 3)
+    protected int code;
 
     @Override
     public Long getId() {
@@ -61,24 +62,19 @@ public class CityImpl implements City{
         this.districtId = districtId;
     }
 
-    @Override
-    public String getCityUpazilaName() {
-        return cityUpazilaName;
+    public String getName() {
+        return name;
     }
 
-    @Override
-    public void setCityUpazilaName(String cityUpazilaName) {
-        this.cityUpazilaName = cityUpazilaName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    @Override
-    public String getCityUpazilaCode() {
-        return cityUpazilaCode;
+    public int getCode() {
+        return code;
     }
 
-    @Override
-    public void setCityUpazilaCode(String cityUpazilaCode) {
-        this.cityUpazilaCode = cityUpazilaCode;
+    public void setCode(int code) {
+        this.code = code;
     }
-    
 }

@@ -7,11 +7,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.technohaven.api.services.CityService;
-import org.technohaven.api.services.DistrictService;
 import org.technohaven.api.wrapper.CitiesWrapper;
-import org.technohaven.api.wrapper.DistrictsWrapper;
 import org.technohaven.core.entities.City;
-import org.technohaven.core.entities.District;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -26,7 +23,7 @@ public class CityEndPoint extends BaseEndpoint {
 
 
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public CitiesWrapper getAllCites(HttpServletRequest request) {
+    public CitiesWrapper getAllCity(HttpServletRequest request) {
         List<City> cities;
         cities = cityService.getCities();
 

@@ -8,8 +8,9 @@ import org.hibernate.annotations.Parameter;
 import javax.persistence.*;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "TRANSMISSION")
-@AdminPresentationClass(friendlyName = "Transmission")
+@AdminPresentationClass(friendlyName = "TransmissionImpl_Transmission")
 public class TransmissionImpl implements Transmission{
 
     private static final Long serialVersionUID = 1L;
@@ -28,7 +29,7 @@ public class TransmissionImpl implements Transmission{
     protected Long id;
 
     @Column(name = "NAME", nullable = false)
-    @AdminPresentation(friendlyName = "Name", order = 1, prominent = true, gridOrder = 1)
+    @AdminPresentation(friendlyName = "TransmissionImpl_Transmission_Name", order = 1, prominent = true, gridOrder = 1)
     protected String name;
 
     @Override

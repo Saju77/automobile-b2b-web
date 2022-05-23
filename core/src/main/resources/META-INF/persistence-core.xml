@@ -26,12 +26,19 @@
         <non-jta-data-source>jdbc/web</non-jta-data-source>
         <mapping-file>META-INF/orm-xml/District.orm.xml</mapping-file>
         <mapping-file>META-INF/orm-xml/City.orm.xml</mapping-file>
+        <mapping-file>META-INF/orm-xml/Port.orm.xml</mapping-file>
+        <mapping-file>META-INF/orm-xml/Transmission.orm.xml</mapping-file>
+        <mapping-file>META-INF/orm-xml/FuelType.orm.xml</mapping-file>
+        <mapping-file>META-INF/orm-xml/Color.orm.xml</mapping-file>
+
         <class>org.technohaven.core.entities.DistrictImpl</class>
         <class>org.technohaven.core.entities.CityImpl</class>
         <class>org.technohaven.core.entities.PortImpl</class>
         <class>org.technohaven.core.entities.TransmissionImpl</class>
         <class>org.technohaven.core.entities.FuelTypeImpl</class>
         <class>org.technohaven.core.entities.ColorImpl</class>
+        <class>org.technohaven.core.entities.ProfileImpl</class>
+        <class>org.technohaven.core.entities.ShowroomImpl</class>
         <exclude-unlisted-classes/>
     </persistence-unit>
     

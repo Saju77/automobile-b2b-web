@@ -9,7 +9,8 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "COLOR")
-@AdminPresentationClass(friendlyName = "Color")
+@Inheritance(strategy = InheritanceType.JOINED)
+@AdminPresentationClass(friendlyName = "ColorImpl_Color")
 public class ColorImpl implements Color{
 
     private static final Long serialVersionUID = 1L;
@@ -28,15 +29,15 @@ public class ColorImpl implements Color{
     protected Long id;
 
     @Column(name = "NAME", nullable = false)
-    @AdminPresentation(friendlyName = "Name", order = 1, prominent = true, gridOrder = 1)
+    @AdminPresentation(friendlyName = "ColorImpl_Color_Name", order = 1, prominent = true, gridOrder = 1)
     protected String name;
 
     @Column(name = "CODE", nullable = false)
-    @AdminPresentation(friendlyName = "Code", order = 2, prominent = true, gridOrder = 2)
-    protected String code;
+    @AdminPresentation(friendlyName = "ColorImpl_Color_Code", order = 2, prominent = true, gridOrder = 2)
+    protected int code;
 
     @Column(name = "SHORT_NAME", nullable = false)
-    @AdminPresentation(friendlyName = "Short Name", order = 3, prominent = true, gridOrder = 3)
+    @AdminPresentation(friendlyName = "ColorImpl_Color_Short_Name", order = 3, prominent = true, gridOrder = 3)
     protected String shortName;
 
     @Override
@@ -60,12 +61,12 @@ public class ColorImpl implements Color{
     }
 
     @Override
-    public String getCode() {
+    public int getCode() {
         return code;
     }
 
     @Override
-    public void setCode(String code) {
+    public void setCode(int code) {
         this.code = code;
     }
 

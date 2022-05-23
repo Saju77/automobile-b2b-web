@@ -26,7 +26,7 @@ public class DistrictServiceImpl implements DistrictService {
 
 	@Override
 	public List<District> findAllDistricts(int limit, int offset) {
-		return districtDao.readAllDistricts(limit, offset);
+		return districtDao.readAllDistrict(limit, offset);
 	}
 	
 	@Override

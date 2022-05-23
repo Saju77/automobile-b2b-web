@@ -39,10 +39,10 @@ public class CityWrapper extends BaseWrapper implements APIWrapper<City> {
     protected District districtId;
 
 	@XmlElement
-    protected String cityUpazilaName;
+    protected String name;
 
 	@XmlElement
-    protected String cityUpazilaCode;
+    protected int code;
 	
 	public Long getId() {
 		return id;
@@ -60,20 +60,20 @@ public class CityWrapper extends BaseWrapper implements APIWrapper<City> {
 		this.districtId = districtId;
 	}
 
-	public String getCityUpazilaName() {
-		return cityUpazilaName;
+	public String getName() {
+		return name;
 	}
 
-	public void setCityUpazilaName(String cityUpazilaName) {
-		this.cityUpazilaName = cityUpazilaName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getCityUpazilaCode() {
-		return cityUpazilaCode;
+	public int getCode() {
+		return code;
 	}
 
-	public void setCityUpazilaCode(String cityUpazilaCode) {
-		this.cityUpazilaCode = cityUpazilaCode;
+	public void setCode(int code) {
+		this.code = code;
 	}
 
 	@Override
@@ -85,8 +85,8 @@ public class CityWrapper extends BaseWrapper implements APIWrapper<City> {
 	public void wrapSummary(City city, HttpServletRequest request) {
 		this.id = city.getId();
         this.districtId = city.getDistrictId();
-        this.cityUpazilaName = city.getCityUpazilaName();
-        this.cityUpazilaCode = city.getCityUpazilaCode();
+        this.name = city.getName();
+        this.code = city.getCode();
 	}
 
 }

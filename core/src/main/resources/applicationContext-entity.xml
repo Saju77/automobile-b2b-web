@@ -12,22 +12,28 @@
 
     <context:component-scan base-package="org.technohaven.core.entities" />
 
-    <bean id="org.technohaven.admin.entities.District"
+    <bean id="org.technohaven.core.entities.District"
           class="org.technohaven.core.entities.DistrictImpl" scope="prototype" />
 
-    <bean id="org.technohaven.admin.entities.City"
+    <bean id="org.technohaven.core.entities.City"
           class="org.technohaven.core.entities.CityImpl" scope="prototype" />
 
-    <bean id="org.technohaven.admin.entities.Port"
+    <bean id="org.technohaven.core.entities.Port"
           class="org.technohaven.core.entities.PortImpl" scope="prototype" />
 
-    <bean id="org.technohaven.admin.entities.Transmission"
+    <bean id="org.technohaven.core.entities.Transmission"
           class="org.technohaven.core.entities.TransmissionImpl" scope="prototype" />
 
-    <bean id="org.technohaven.admin.entities.FuelType"
+    <bean id="org.technohaven.core.entities.FuelType"
           class="org.technohaven.core.entities.FuelTypeImpl" scope="prototype" />
 
-    <bean id="org.technohaven.admin.entities.Color"
+    <bean id="org.technohaven.core.entities.Color"
           class="org.technohaven.core.entities.ColorImpl" scope="prototype" />
+
+    <bean id="org.technohaven.core.entities.Profile"
+          class="org.technohaven.core.entities.ProfileImpl" scope="prototype" />
+
+    <bean id="org.technohaven.core.entities.Showroom"
+          class="org.technohaven.core.entities.ShowroomImpl" scope="prototype" />
 
 </beans>

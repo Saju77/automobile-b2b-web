@@ -38,7 +38,7 @@ public class DistrictWrapper extends BaseWrapper implements APIWrapper<District>
     protected String name;
 
 	@XmlElement
-    protected String code;
+    protected int code;
 	
 	public Long getId() {
 		return id;
@@ -56,11 +56,11 @@ public class DistrictWrapper extends BaseWrapper implements APIWrapper<District>
 		this.name = name;
 	}
 
-	public String getCode() {
+	public int getCode() {
 		return code;
 	}
 
-	public void setCode(String code) {
+	public void setCode(int code) {
 		this.code = code;
 	}
 

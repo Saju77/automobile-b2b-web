@@ -40,8 +40,8 @@ public class DistrictDaoImpl implements DistrictDao {
 	}
 	
 	@Override
-	public List<District> readAllDistricts(int limit, int offset) {
-        TypedQuery<District> query = em.createNamedQuery("CBC_READ_ALL_DISTRICTS", District.class);
+	public List<District> readAllDistrict(int limit, int offset) {
+        TypedQuery<District> query = em.createNamedQuery("CBC_READ_ALL_DISTRICT", District.class);
         query.setFirstResult(offset);
         query.setMaxResults(limit);
         query.setHint(QueryHints.HINT_CACHEABLE, true);

@@ -22,7 +22,7 @@ public interface CityDao {
      * @return
      */
     @Nonnull
-    public List<City> readAllCities(@Nonnull int limit, @Nonnull int offset);
+    public List<City> readAllCity(@Nonnull int limit, @Nonnull int offset);
 
     @Nonnull
     public List<City> readCitiesByName(@Nonnull String cityName, int limit, int offset);

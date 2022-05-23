@@ -12,8 +12,8 @@ public interface District extends Serializable {
 
     void setName(String name);
 
-    String getCode();
+    int getCode();
 
-    void setCode(String code);
+    void setCode(int code);
 
 }

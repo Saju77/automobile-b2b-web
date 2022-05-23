@@ -46,11 +46,6 @@ public class DistrictServiceImpl implements DistrictService {
     public District save(District district) {
         return districtDao.save(district);
     }
-    
-	@Override
-    public void getString(String value) {
-    	System.out.println("The value is "+value);
-    }
 	
 	protected List<Property> getPropertiesFromEntityForm(EntityForm entityForm) {
         List<Property> properties = new ArrayList<Property>(entityForm.getFields().size());
@@ -154,7 +149,7 @@ public class DistrictServiceImpl implements DistrictService {
 	
 	@Override
 	public PersistenceResponse addEntity(EntityForm entityForm, String[] customCriteria, List<SectionCrumb> sectionCrumb) throws ServiceException {
-		System.out.println("Print from DistrictServiceImpl.addEntity() method.");
+
         PersistencePackageRequest ppr = getRequestForEntityForm(entityForm, customCriteria, sectionCrumb);
         // If the entity form has dynamic forms inside of it, we need to persist those as well.
         // They are typically done in their own custom persistence handlers, which will get triggered

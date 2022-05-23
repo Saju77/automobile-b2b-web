@@ -25,7 +25,7 @@ public class DistrictEndPoint extends BaseEndpoint {
         
     
   @RequestMapping(value = "", method = RequestMethod.GET)
-  public DistrictsWrapper getAllDistricts(HttpServletRequest request) {    	
+  public DistrictsWrapper getAllDistrict(HttpServletRequest request) {
       List<District> districts;
       districts = districtService.getDistricts();
       

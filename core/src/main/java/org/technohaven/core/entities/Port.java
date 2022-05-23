@@ -12,16 +12,12 @@ public interface Port extends Serializable {
 
     void setName(String name);
 
-    String getCode();
+    int getCode();
 
-    void setCode(String code);
+    void setCode(int code);
 
-    String getDistrict();
+    City getCityId();
 
-    void setDistrict(String district);
-
-    String getCity();
-
-    void setCity(String city);
+    void setCityId(City cityId);
 
 }

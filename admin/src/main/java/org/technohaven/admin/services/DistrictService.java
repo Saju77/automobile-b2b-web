@@ -16,8 +16,6 @@ import org.technohaven.core.entities.District;
 public interface DistrictService {
 
 	District save(District district);
-
-	void getString(String str);
 	
 	/**
      * Works the same as {@link #add(PersistencePackageRequest)} but you can optionally invoke the transactional version

@@ -22,7 +22,7 @@ public interface DistrictDao {
 	 * @return
 	 */
 	 @Nonnull
-	 public List<District> readAllDistricts(@Nonnull int limit, @Nonnull int offset);
+	 public List<District> readAllDistrict(@Nonnull int limit, @Nonnull int offset);
 	 
 	 @Nonnull
 	 public List<District> readDistrictsByName(@Nonnull String districtName, int limit, int offset);

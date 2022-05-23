@@ -8,13 +8,13 @@ public interface City extends Serializable {
 
     void setId(Long id);
 
-    String getCityUpazilaName();
+    public String getName();
 
-    void setCityUpazilaName(String cityOrPoName);
+    public void setName(String name);
 
-    String getCityUpazilaCode();
+    public int getCode();
 
-    void setCityUpazilaCode(String cityOrPoCode);
+    public void setCode(int code);
     
     District getDistrictId();
 

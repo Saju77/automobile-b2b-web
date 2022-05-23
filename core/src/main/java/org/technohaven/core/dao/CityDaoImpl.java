@@ -35,15 +35,15 @@ public class CityDaoImpl implements CityDao{
     public List<City> getCities() {
         CriteriaBuilder builder = this.em.getCriteriaBuilder();
         CriteriaQuery<City> criteria = builder.createQuery(City.class);
-        Root<CityImpl> cityRoot = criteria.from(CityImpl.class);
-        criteria.select(cityRoot);
+        Root<CityImpl> root = criteria.from(CityImpl.class);
+        criteria.select(root);
         TypedQuery<City> query = this.em.createQuery(criteria);
         return query.getResultList();
     }
 
     @Override
-    public List<City> readAllCities(int limit, int offset) {
-        TypedQuery<City> query = em.createNamedQuery("CBC_READ_ALL_CITIES", City.class);
+    public List<City> readAllCity(int limit, int offset) {
+        TypedQuery<City> query = em.createNamedQuery("CBC_READ_ALL_CITY", City.class);
         query.setFirstResult(offset);
         query.setMaxResults(limit);
         query.setHint(QueryHints.HINT_CACHEABLE, true);

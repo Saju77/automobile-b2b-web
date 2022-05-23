@@ -12,4 +12,18 @@
         <!-- Apply Admin entity metadata overrides here -->
 
     </mo:override>
+
+    <bean id="blMessageSourceBaseNames-custom-admin" class="org.springframework.beans.factory.config.ListFactoryBean">
+        <property name="sourceList">
+            <list>
+                <value>classpath:/cmessages/CMessages-admin</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean class="org.broadleafcommerce.common.extensibility.context.merge.LateStageMergeBeanPostProcessor">
+        <property name="collectionRef" value="blMessageSourceBaseNames-custom-admin" />
+        <property name="targetRef" value="blMessageSourceBaseNames" />
+    </bean>
+
 </beans>

@@ -49,8 +49,6 @@ public class DistrictController extends AdminBasicEntityController {
     @RequestMapping(value = "/getPrint", method = RequestMethod.GET)
     public String printString(HttpServletRequest request, Model model) {
     	
-    	districtService.getString("The getPrint method and The section key is "+SECTION_KEY);
-    	
     	// This is expected by the modules/emptyContainer template, this is a custom template that gets included into the body
         model.addAttribute("customView", "views/district");
 
@@ -65,9 +63,7 @@ public class DistrictController extends AdminBasicEntityController {
     public String saveDistrict(HttpServletRequest request, HttpServletResponse response, Model model,
             @PathVariable  Map<String, String> pathVars,
             @RequestParam(defaultValue = "") String entityType) throws Exception {
-    	
-    	districtService.getString("The saveDistrict method(get) and The section key is "+SECTION_KEY);
-    	
+
     	// This is expected by the modules/emptyContainer template, this is a custom template that gets included into the body
         model.addAttribute("customView", "views/district");
 
@@ -155,8 +151,6 @@ public class DistrictController extends AdminBasicEntityController {
             @PathVariable  Map<String, String> pathVars,
             @ModelAttribute(value="entityForm") EntityForm entityForm, BindingResult result) throws Exception {
 
-    	districtService.getString("The save method and The section key is "+SECTION_KEY);
-    	
         String sectionKey = getSectionKey(pathVars);
     	String sectionClassName = getClassNameForSection(sectionKey);
         List<SectionCrumb> sectionCrumbs = getSectionCrumbs(request, null, null);

@@ -9,7 +9,8 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "FUEL_TYPE")
-@AdminPresentationClass(friendlyName = "Fuel Type")
+@Inheritance(strategy = InheritanceType.JOINED)
+@AdminPresentationClass(friendlyName = "FuelTypeImpl_Fuel_Type")
 public class FuelTypeImpl implements FuelType{
 
     private static final Long serialVersionUID = 1L;
@@ -28,7 +29,7 @@ public class FuelTypeImpl implements FuelType{
     protected Long id;
 
     @Column(name = "NAME", nullable = false)
-    @AdminPresentation(friendlyName = "Name", order = 1, prominent = true, gridOrder = 1)
+    @AdminPresentation(friendlyName = "FuelTypeImpl_FuelType_Name", order = 1, prominent = true, gridOrder = 1)
     protected String name;
 
     @Override

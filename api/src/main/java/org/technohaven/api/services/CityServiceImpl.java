@@ -14,7 +14,7 @@ import java.util.List;
 @Service("blCityService")
 public class CityServiceImpl implements CityService{
 
-    protected static final Log LOG = LogFactory.getLog(DistrictServiceImpl.class);
+    protected static final Log LOG = LogFactory.getLog(CityServiceImpl.class);
 
     @Resource(name="blCityDao")
     protected CityDao cityDao;
@@ -26,7 +26,7 @@ public class CityServiceImpl implements CityService{
 
     @Override
     public List<City> findAllCities(int limit, int offset) {
-        return cityDao.readAllCities(limit, offset);
+        return cityDao.readAllCity(limit, offset);
     }
 
     @Override
