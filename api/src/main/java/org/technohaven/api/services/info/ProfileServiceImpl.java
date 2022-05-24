@@ -1,11 +1,14 @@
 package org.technohaven.api.services.info;
 
 import org.broadleafcommerce.common.id.service.IdGenerationService;
+import org.broadleafcommerce.common.util.TransactionUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.technohaven.core.dao.info.ProfileDao;
 import org.technohaven.core.entities.Profile;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service("blProfileService")
 public class ProfileServiceImpl implements ProfileService{
@@ -17,8 +20,12 @@ public class ProfileServiceImpl implements ProfileService{
     protected IdGenerationService idGenerationService;
 
     @Override
-    public Profile save(Profile profile) {
+    @Transactional(TransactionUtils.DEFAULT_TRANSACTION_MANAGER)
+    public Profile saveProfile(Profile profile) {
     	try {
+            if (profile.getId() == null) {
+                profile.setId(findNextProfileId());
+            }
     		return profileDao.save(profile);
     	}catch(Exception ex) {
     		System.out.println(ex.getMessage());
@@ -39,6 +46,11 @@ public class ProfileServiceImpl implements ProfileService{
             }
         }
         return profile;
+    }
+
+    @Override
+    public List<Profile> getProfiles() {
+        return profileDao.getProfiles();
     }
 
     @Override

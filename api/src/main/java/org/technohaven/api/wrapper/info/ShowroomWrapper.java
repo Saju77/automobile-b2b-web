@@ -1,11 +1,15 @@
 package org.technohaven.api.wrapper.info;
 
+import org.broadleafcommerce.common.rest.api.wrapper.APIUnwrapper;
 import org.broadleafcommerce.common.rest.api.wrapper.APIWrapper;
 import org.broadleafcommerce.common.rest.api.wrapper.BaseWrapper;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+import org.technohaven.api.services.info.ShowroomService;
 import org.technohaven.core.entities.City;
 import org.technohaven.core.entities.District;
+import org.technohaven.core.entities.Profile;
 import org.technohaven.core.entities.Showroom;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,7 +22,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Scope("prototype")
 @XmlRootElement(name = "showroom")
 @XmlAccessorType(value = XmlAccessType.FIELD)
-public class ShowroomWrapper extends BaseWrapper implements APIWrapper<Showroom> {
+public class ShowroomWrapper extends BaseWrapper implements APIWrapper<Showroom>, APIUnwrapper<Showroom> {
 
     @XmlElement
     protected Long id;
@@ -104,5 +108,17 @@ public class ShowroomWrapper extends BaseWrapper implements APIWrapper<Showroom>
         this.district = showroom.getDistrict();
         this.city = showroom.getCity();
         this.address = showroom.getAddress();
+    }
+
+    @Override
+    public Showroom unwrap(HttpServletRequest request, ApplicationContext context) {
+        ShowroomService showroomService = (ShowroomService) context.getBean("blShowroomService");
+        Showroom showroom = showroomService.createShowroomFromId(this.id);
+        showroom.setName(this.name);
+        showroom.setPhoneNumber(this.phoneNumber);
+        showroom.setDistrict(this.district);
+        showroom.setCity(this.city);
+        showroom.setAddress(this.address);
+        return showroom;
     }
 }

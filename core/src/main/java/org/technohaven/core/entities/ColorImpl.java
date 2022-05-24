@@ -16,15 +16,16 @@ public class ColorImpl implements Color{
     private static final Long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(generator= "ColorId")
-    @GenericGenerator(
-            name="ColorId",
-            strategy="org.broadleafcommerce.common.persistence.IdOverrideTableGenerator",
-            parameters = {
-                    @Parameter(name="segment_value", value="ColorImpl"),
-                    @Parameter(name="entity_name", value="org.technohaven.core.entities.ColorImpl")
-            }
-    )
+    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @GeneratedValue(generator= "ColorId")
+//    @GenericGenerator(
+//            name="ColorId",
+//            strategy="org.broadleafcommerce.common.persistence.IdOverrideTableGenerator",
+//            parameters = {
+//                    @Parameter(name="segment_value", value="ColorImpl"),
+//                    @Parameter(name="entity_name", value="org.technohaven.core.entities.ColorImpl")
+//            }
+//    )
     @Column(name = "COLOR_ID", nullable = false)
     protected Long id;
 

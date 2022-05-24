@@ -17,15 +17,16 @@ public class PortImpl implements Port{
     private static final Long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(generator= "PortId")
-    @GenericGenerator(
-            name="PortId",
-            strategy="org.broadleafcommerce.common.persistence.IdOverrideTableGenerator",
-            parameters = {
-                    @Parameter(name="segment_value", value="PortImpl"),
-                    @Parameter(name="entity_name", value="org.technohaven.core.entities.PortImpl")
-            }
-    )
+    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @GeneratedValue(generator= "PortId")
+//    @GenericGenerator(
+//            name="PortId",
+//            strategy="org.broadleafcommerce.common.persistence.IdOverrideTableGenerator",
+//            parameters = {
+//                    @Parameter(name="segment_value", value="PortImpl"),
+//                    @Parameter(name="entity_name", value="org.technohaven.core.entities.PortImpl")
+//            }
+//    )
     @Column(name = "PORT_ID", nullable = false)
     protected Long id;
 

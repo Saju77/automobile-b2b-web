@@ -21,15 +21,16 @@ public class ProfileImpl implements Profile{
     private static final Log LOG = LogFactory.getLog(ProfileImpl.class);
 
     @Id
-    @GeneratedValue(generator= "ProfileId")
-    @GenericGenerator(
-            name="ProfileId",
-            strategy="org.broadleafcommerce.common.persistence.IdOverrideTableGenerator",
-            parameters = {
-                    @Parameter(name="segment_value", value="ProfileImpl"),
-                    @Parameter(name="entity_name", value="org.technohaven.core.entities.ProfileImpl")
-            }
-    )
+    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @GeneratedValue(generator= "ProfileId")
+//    @GenericGenerator(
+//            name="ProfileId",
+//            strategy="org.broadleafcommerce.common.persistence.IdOverrideTableGenerator",
+//            parameters = {
+//                    @Parameter(name="segment_value", value="ProfileImpl"),
+//                    @Parameter(name="entity_name", value="org.technohaven.core.entities.ProfileImpl")
+//            }
+//    )
     @Column(name = "PROFILE_ID", nullable = false)
     protected Long id;
 

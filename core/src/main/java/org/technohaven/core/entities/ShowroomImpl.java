@@ -20,15 +20,16 @@ public class ShowroomImpl implements Showroom{
     private static final Log LOG = LogFactory.getLog(ShowroomImpl.class);
 
     @Id
-    @GeneratedValue(generator= "ShowroomId")
-    @GenericGenerator(
-            name="ShowroomId",
-            strategy="org.broadleafcommerce.common.persistence.IdOverrideTableGenerator",
-            parameters = {
-                    @Parameter(name="segment_value", value="ShowroomImpl"),
-                    @Parameter(name="entity_name", value="org.technohaven.core.entities.ShowroomImpl")
-            }
-    )
+    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @GeneratedValue(generator= "ShowroomId")
+//    @GenericGenerator(
+//            name="ShowroomId",
+//            strategy="org.broadleafcommerce.common.persistence.IdOverrideTableGenerator",
+//            parameters = {
+//                    @Parameter(name="segment_value", value="ShowroomImpl"),
+//                    @Parameter(name="entity_name", value="org.technohaven.core.entities.ShowroomImpl")
+//            }
+//    )
     @Column(name = "SHOWROOM_ID", nullable = false)
     protected Long id;
 
@@ -105,6 +106,7 @@ public class ShowroomImpl implements Showroom{
     public void setAddress(String address) {
         this.address = address;
     }
+
 }
 
 

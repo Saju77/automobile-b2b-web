@@ -2,17 +2,11 @@ package org.technohaven.api.endpoint.info;
 
 import com.broadleafcommerce.rest.api.endpoint.BaseEndpoint;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-import org.technohaven.api.services.DistrictService;
+import org.springframework.web.bind.annotation.*;
 import org.technohaven.api.services.info.ShowroomService;
-import org.technohaven.api.wrapper.DistrictsWrapper;
 import org.technohaven.api.wrapper.info.ProfileWrapper;
 import org.technohaven.api.wrapper.info.ShowroomWrapper;
 import org.technohaven.api.wrapper.info.ShowroomsWrapper;
-import org.technohaven.core.entities.District;
 import org.technohaven.core.entities.Profile;
 import org.technohaven.core.entities.Showroom;
 
@@ -21,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/showroominfo",  produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+@RequestMapping(value = "/showroominfo",  produces = { MediaType.APPLICATION_JSON_VALUE })
 public class ShowroomEndPoint  extends BaseEndpoint {
 
     @Resource(name = "blShowroomService")
@@ -35,6 +29,20 @@ public class ShowroomEndPoint  extends BaseEndpoint {
         ShowroomsWrapper wrapper = (ShowroomsWrapper) context.getBean(ShowroomsWrapper.class.getName());
         wrapper.wrapDetails(showrooms, request);
         return wrapper;
+    }
+
+    @RequestMapping(value="", method = RequestMethod.POST,
+            consumes = { MediaType.APPLICATION_JSON_VALUE })
+    public ShowroomWrapper addShowroom(HttpServletRequest request, @RequestBody ShowroomWrapper wrapper) {
+
+            Showroom showroom = wrapper.unwrap(request, context);
+
+            showroomService.save(showroom);
+
+            ShowroomWrapper response = (ShowroomWrapper) context.getBean(ShowroomWrapper.class.getName());
+            response.wrapDetails(showroom, request);
+
+            return response;
     }
     
     @RequestMapping(value = "details/{id}", method = RequestMethod.GET)

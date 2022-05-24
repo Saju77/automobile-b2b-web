@@ -18,15 +18,16 @@ public class CityImpl implements City{
     private static final Long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(generator= "CityId")
-    @GenericGenerator(
-            name="CityId",
-            strategy="org.broadleafcommerce.common.persistence.IdOverrideTableGenerator",
-            parameters = {
-                    @Parameter(name="segment_value", value="CityImpl"),
-                    @Parameter(name="entity_name", value="org.technohaven.core.entities.CityImpl")
-            }
-    )
+    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @GeneratedValue(generator= "CityId")
+//    @GenericGenerator(
+//            name="CityId",
+//            strategy="org.broadleafcommerce.common.persistence.IdOverrideTableGenerator",
+//            parameters = {
+//                    @Parameter(name="segment_value", value="CityImpl"),
+//                    @Parameter(name="entity_name", value="org.technohaven.core.entities.CityImpl")
+//            }
+//    )
     @Column(name = "CITY_ID", nullable = false)
     protected Long id;
 

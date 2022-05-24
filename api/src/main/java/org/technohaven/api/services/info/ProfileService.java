@@ -1,19 +1,24 @@
 package org.technohaven.api.services.info;
 
 import org.technohaven.core.entities.Profile;
+import org.technohaven.core.entities.Showroom;
+
+import java.util.List;
 
 public interface ProfileService {
 
-    Profile save(Profile profile);
+    Profile saveProfile(Profile profile);
 
     /**
      * Returns a {@link Profile} by first looking in the database, otherwise creating a new non-persisted {@link Profile}
      *
      * @param profileId the id of the profile to lookup
      */
-    public Profile createProfileFromId(Long profileId);
+    Profile createProfileFromId(Long profileId);
 
-    public Long findNextProfileId();
+    List<Profile> getProfiles();
+
+    Long findNextProfileId();
 
     Profile findProfileById(Long profileId);
 
