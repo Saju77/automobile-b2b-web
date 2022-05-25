@@ -7,6 +7,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.technohaven.api.services.info.ShowroomService;
+import org.technohaven.api.wrapper.CityWrapper;
+import org.technohaven.api.wrapper.DistrictWrapper;
 import org.technohaven.core.entities.City;
 import org.technohaven.core.entities.District;
 import org.technohaven.core.entities.Profile;
@@ -34,10 +36,10 @@ public class ShowroomWrapper extends BaseWrapper implements APIWrapper<Showroom>
     protected String phoneNumber;
 
     @XmlElement
-    protected District district;
+    protected DistrictWrapper district;
 
     @XmlElement
-    protected City city;
+    protected CityWrapper city;
 
     @XmlElement
     protected String address;
@@ -66,19 +68,19 @@ public class ShowroomWrapper extends BaseWrapper implements APIWrapper<Showroom>
         this.phoneNumber = phoneNumber;
     }
 
-    public District getDistrict() {
+    public DistrictWrapper getDistrict() {
         return district;
     }
 
-    public void setDistrict(District district) {
+    public void setDistrict(DistrictWrapper district) {
         this.district = district;
     }
 
-    public City getCity() {
+    public CityWrapper getCity() {
         return city;
     }
 
-    public void setCity(City city) {
+    public void setCity(CityWrapper city) {
         this.city = city;
     }
 
@@ -95,8 +97,8 @@ public class ShowroomWrapper extends BaseWrapper implements APIWrapper<Showroom>
     	this.id = showroom.getId();
         this.name = showroom.getName();
         this.phoneNumber = showroom.getPhoneNumber();
-        this.district = showroom.getDistrict();
-        this.city = showroom.getCity();
+        this.district = (DistrictWrapper) showroom.getDistrict();
+        this.city = (CityWrapper) showroom.getCity();
         this.address = showroom.getAddress();
     }
 
@@ -105,8 +107,8 @@ public class ShowroomWrapper extends BaseWrapper implements APIWrapper<Showroom>
         this.id = showroom.getId();
         this.name = showroom.getName();
         this.phoneNumber = showroom.getPhoneNumber();
-        this.district = showroom.getDistrict();
-        this.city = showroom.getCity();
+        this.district = (DistrictWrapper) showroom.getDistrict();
+        this.city = (CityWrapper) showroom.getCity();
         this.address = showroom.getAddress();
     }
 
@@ -116,8 +118,8 @@ public class ShowroomWrapper extends BaseWrapper implements APIWrapper<Showroom>
         Showroom showroom = showroomService.createShowroomFromId(this.id);
         showroom.setName(this.name);
         showroom.setPhoneNumber(this.phoneNumber);
-        showroom.setDistrict(this.district);
-        showroom.setCity(this.city);
+        showroom.setDistrict((District) this.district);
+        showroom.setCity((City) this.city);
         showroom.setAddress(this.address);
         return showroom;
     }

@@ -3,11 +3,15 @@ package org.technohaven.core.entities;
 import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.broadleafcommerce.common.copy.CreateResponse;
+import org.broadleafcommerce.common.copy.MultiTenantCopyContext;
 import org.broadleafcommerce.common.presentation.AdminPresentation;
 import org.broadleafcommerce.common.presentation.AdminPresentationClass;
 import org.broadleafcommerce.profile.core.domain.CustomerAdminPresentation;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 
@@ -177,4 +181,5 @@ public class ProfileImpl implements Profile{
     public void setRegistered(boolean registered) {
         this.registered = Boolean.valueOf(registered);
     }
+
 }

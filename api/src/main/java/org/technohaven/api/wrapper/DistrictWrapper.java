@@ -1,9 +1,14 @@
 package org.technohaven.api.wrapper;
 
+import org.broadleafcommerce.common.rest.api.wrapper.APIUnwrapper;
 import org.broadleafcommerce.common.rest.api.wrapper.APIWrapper;
 import org.broadleafcommerce.common.rest.api.wrapper.BaseWrapper;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+import org.technohaven.api.services.CityService;
+import org.technohaven.api.services.DistrictService;
+import org.technohaven.core.entities.City;
 import org.technohaven.core.entities.District;
 
 import javax.servlet.http.HttpServletRequest;
@@ -29,7 +34,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Scope("prototype")
 @XmlRootElement(name = "district")
 @XmlAccessorType(value = XmlAccessType.FIELD)
-public class DistrictWrapper extends BaseWrapper implements APIWrapper<District> {
+public class DistrictWrapper extends BaseWrapper implements APIWrapper<District>, APIUnwrapper<District> {
 
 	@XmlElement
     protected Long id;
@@ -75,5 +80,13 @@ public class DistrictWrapper extends BaseWrapper implements APIWrapper<District>
         this.name = district.getName();
         this.code = district.getCode();
 	}
-	
+
+	@Override
+	public District unwrap(HttpServletRequest request, ApplicationContext context) {
+		DistrictService districtService = (DistrictService) context.getBean("blDistrictService");
+		District district = districtService.createDistrictFromId(this.id);
+		district.setName(this.name);
+		district.setCode(this.code);
+		return district;
+	}
 }

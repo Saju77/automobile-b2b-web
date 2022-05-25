@@ -2,6 +2,7 @@ package org.technohaven.api.services;
 
 import org.technohaven.core.entities.City;
 import org.technohaven.core.entities.District;
+import org.technohaven.core.entities.Showroom;
 
 import java.util.List;
 
@@ -20,5 +21,11 @@ public interface CityService {
      * @return a list of city instances that match the search criteria
      */
     List<City> findCitiesByName(String cityName, int limit, int offset);
+
+    City createCityFromId(Long cityId);
+
+    City findCityById(Long cityId);
+
+    public Long findNextCityId();
 
 }

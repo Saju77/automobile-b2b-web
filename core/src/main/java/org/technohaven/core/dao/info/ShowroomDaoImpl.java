@@ -31,8 +31,8 @@ public class ShowroomDaoImpl implements ShowroomDao{
 
     @Nonnull
     @Override
-    public Showroom readShowroomById(@Nonnull Long ShowroomId) {
-        return em.find(ShowroomImpl.class, ShowroomId);
+    public Showroom readShowroomById(@Nonnull Long showroomId) {
+        return em.find(ShowroomImpl.class, showroomId);
     }
 
     @Nonnull

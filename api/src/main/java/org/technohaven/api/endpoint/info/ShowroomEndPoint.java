@@ -44,6 +44,36 @@ public class ShowroomEndPoint  extends BaseEndpoint {
 
             return response;
     }
+
+    //    @ApiResponses({
+//            @ApiResponse(code = org.apache.http.HttpStatus.SC_NOT_FOUND,
+//                    message = BroadleafWebServicesException.CUSTOMER_NOT_FOUND,
+//                    response = ErrorWrapper.class
+//            )
+//    })
+//    @ApiImplicitParams(
+//            @ApiImplicitParam(name = RestApiCustomerStateFilter.CUSTOMER_ID_ATTRIBUTE,
+//                    paramType = "query",
+//                    dataType = "long",
+//                    required = true)
+//    )
+    @RequestMapping(value = "/edit/{showroomId}", method = RequestMethod.PUT, consumes = { MediaType.APPLICATION_JSON_VALUE })
+    public ShowroomWrapper updateShowroom(HttpServletRequest request, @PathVariable("showroomId") Long showroomId, @RequestBody ShowroomWrapper wrapper) {
+        Showroom showroom = showroomId != null ? showroomService.findShowroomById(showroomId) : null;
+        if (showroom == null) {
+            throw new RuntimeException();
+        }
+        // we unwrap the update, by default this will read the customer from the database if id is specified on the request
+        wrapper.setId(showroomId);
+        Showroom update = wrapper.unwrap(request, context);
+
+        showroom = showroomService.save(update);
+
+        ShowroomWrapper response = (ShowroomWrapper) context.getBean(ShowroomWrapper.class.getName());
+        response.wrapDetails(showroom, request);
+
+        return response;
+    }
     
     @RequestMapping(value = "details/{id}", method = RequestMethod.GET)
     public ShowroomWrapper findShowroomById(HttpServletRequest request, @PathVariable("id") Long id) {

@@ -3,6 +3,7 @@ package org.technohaven.core.dao;
 import javax.annotation.Nonnull;
 
 import org.technohaven.core.entities.District;
+import org.technohaven.core.entities.Showroom;
 
 import java.util.List;
 
@@ -26,5 +27,10 @@ public interface DistrictDao {
 	 
 	 @Nonnull
 	 public List<District> readDistrictsByName(@Nonnull String districtName, int limit, int offset);
+
+	@Nonnull
+	public District readDistrictById(@Nonnull Long districtId);
+
+	public District create();
 	
 }

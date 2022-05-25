@@ -35,7 +35,7 @@ public class CityImpl implements City{
     @JoinColumn(name = "DISTRICT_ID")
     @AdminPresentation(friendlyName = "CityImpl_City_District", order = 1, prominent = true, gridOrder = 1)
     @AdminPresentationToOneLookup()
-    protected District districtId;
+    protected District district;
 
     @Column(name = "CITY_UPAZILA_NAME", nullable = false)
     @AdminPresentation(friendlyName = "CityImpl_City_City_Upazila_Name", order = 2, prominent = true, gridOrder = 2)
@@ -55,12 +55,12 @@ public class CityImpl implements City{
         this.id = id;
     }
 
-    public District getDistrictId() {
-        return districtId;
+    public District getDistrict() {
+        return district;
     }
 
-    public void setDistrictId(District districtId) {
-        this.districtId = districtId;
+    public void setDistrict(District district) {
+        this.district = district;
     }
 
     public String getName() {

@@ -61,27 +61,17 @@ public class ProfileEndPoint extends BaseEndpoint {
 //                    dataType = "long",
 //                    required = true)
 //    )
-    @RequestMapping(method = RequestMethod.PUT, consumes = { MediaType.APPLICATION_JSON_VALUE })
-    public ProfileWrapper updateProfile(HttpServletRequest request, @RequestBody ProfileWrapper wrapper) {
-        Profile profile = wrapper.getId() != null ? profileService.findProfileById(wrapper.getId()) : null;
+    @RequestMapping(value = "/edit/{profileId}", method = RequestMethod.PUT, consumes = { MediaType.APPLICATION_JSON_VALUE })
+    public ProfileWrapper updateProfile(HttpServletRequest request, @PathVariable("profileId") Long profileId, @RequestBody ProfileWrapper wrapper) {
+        Profile profile = profileId != null ? profileService.findProfileById(profileId) : null;
         if (profile == null) {
             throw new RuntimeException();
         }
         // we unwrap the update, by default this will read the customer from the database if id is specified on the request
+        wrapper.setId(profileId);
         Profile update = wrapper.unwrap(request, context);
 
-        profile.setName(update.getName());
-        profile.setDesignation(update.getDesignation());
-        profile.setPhoneNumber(update.getPhoneNumber());
-        profile.setBusinessEmail(update.getBusinessEmail());
-        profile.setCompanyName(update.getCompanyName());
-        profile.setBinNumber(update.getBinNumber());
-        profile.setTradeLicense(update.getTradeLicense());
-        profile.setBarvidaMemberId(update.getBarvidaMemberId());
-        profile.setAddress(update.getAddress());
-        profile.setPhotoUrl(update.getPhotoUrl());
-
-        profile = profileService.saveProfile(profile);
+        profile = profileService.saveProfile(update);
 
         ProfileWrapper response = (ProfileWrapper) context.getBean(ProfileWrapper.class.getName());
         response.wrapDetails(profile, request);
@@ -89,7 +79,7 @@ public class ProfileEndPoint extends BaseEndpoint {
         return response;
     }
 
-    @RequestMapping(value = "details/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/details/{id}", method = RequestMethod.GET)
     public ProfileWrapper findProfileById(HttpServletRequest request, @PathVariable("id") Long id) {
         Profile profile = profileService.findProfileById(id);
         ProfileWrapper wrapper;

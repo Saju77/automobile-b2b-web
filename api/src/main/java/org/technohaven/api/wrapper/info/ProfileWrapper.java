@@ -54,6 +54,44 @@ public class ProfileWrapper extends BaseWrapper implements APIWrapper<Profile>, 
     @XmlElement
     protected String photoUrl;
 
+    @Override
+    public void wrapDetails(Profile profile, HttpServletRequest request) {
+        this.id = profile.getId();
+        this.name = profile.getName();
+        this.designation = profile.getDesignation();
+        this.phoneNumber = profile.getPhoneNumber();
+        this.businessEmail = profile.getBusinessEmail();
+        this.companyName = profile.getCompanyName();
+        this.binNumber = profile.getBinNumber();
+        this.tradeLicense = profile.getTradeLicense();
+        this.barvidaMemberId = profile.getBarvidaMemberId();
+        this.address = profile.getAddress();
+        this.photoUrl = profile.getPhotoUrl();
+    }
+
+    @Override
+    public void wrapSummary(Profile profile, HttpServletRequest request) {
+        wrapDetails(profile, request);
+    }
+
+    @Override
+    public Profile unwrap(HttpServletRequest request, ApplicationContext context) {
+        ProfileService profileService = (ProfileService) context.getBean("blProfileService");
+        Profile profile = profileService.createProfileFromId(this.id);
+        profile.setName(this.name);
+        profile.setDesignation(this.designation);
+        profile.setPhoneNumber(this.phoneNumber);
+        profile.setBusinessEmail(this.businessEmail);
+        profile.setCompanyName(this.companyName);
+        profile.setBinNumber(this.binNumber);
+        profile.setTradeLicense(this.tradeLicense);
+        profile.setBarvidaMemberId(this.barvidaMemberId);
+        profile.setAddress(this.address);
+        profile.setPhotoUrl(this.photoUrl);
+
+        return profile;
+    }
+
     public Long getId() {
         return id;
     }
@@ -140,44 +178,6 @@ public class ProfileWrapper extends BaseWrapper implements APIWrapper<Profile>, 
 
     public void setPhotoUrl(String photoUrl) {
         this.photoUrl = photoUrl;
-    }
-
-    @Override
-    public void wrapDetails(Profile profile, HttpServletRequest request) {
-        this.id = profile.getId();
-        this.name = profile.getName();
-        this.designation = profile.getDesignation();
-        this.phoneNumber = profile.getPhoneNumber();
-        this.businessEmail = profile.getBusinessEmail();
-        this.companyName = profile.getCompanyName();
-        this.binNumber = profile.getBinNumber();
-        this.tradeLicense = profile.getTradeLicense();
-        this.barvidaMemberId = profile.getBarvidaMemberId();
-        this.address = profile.getAddress();
-        this.photoUrl = profile.getPhotoUrl();
-    }
-
-    @Override
-    public void wrapSummary(Profile profile, HttpServletRequest request) {
-        wrapDetails(profile, request);
-    }
-
-    @Override
-    public Profile unwrap(HttpServletRequest request, ApplicationContext context) {
-        ProfileService profileService = (ProfileService) context.getBean("blProfileService");
-        Profile profile = profileService.createProfileFromId(this.id);
-        profile.setName(this.name);
-        profile.setDesignation(this.designation);
-        profile.setPhoneNumber(this.phoneNumber);
-        profile.setBusinessEmail(this.businessEmail);
-        profile.setCompanyName(this.companyName);
-        profile.setBinNumber(this.binNumber);
-        profile.setTradeLicense(this.tradeLicense);
-        profile.setBarvidaMemberId(this.barvidaMemberId);
-        profile.setAddress(this.address);
-        profile.setPhotoUrl(this.photoUrl);
-
-        return profile;
     }
 
 }

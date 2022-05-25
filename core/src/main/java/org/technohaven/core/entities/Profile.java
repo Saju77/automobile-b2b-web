@@ -1,6 +1,8 @@
 package org.technohaven.core.entities;
 
 import org.apache.commons.lang3.BooleanUtils;
+import org.broadleafcommerce.common.copy.MultiTenantCloneable;
+import org.broadleafcommerce.profile.core.domain.Customer;
 
 import java.io.Serializable;
 

@@ -12,7 +12,7 @@ public interface ShowroomDao {
     public Showroom save(Showroom showroom);
 
     @Nonnull
-    public Showroom readShowroomById(@Nonnull Long ShowroomId);
+    public Showroom readShowroomById(@Nonnull Long showroomId);
 
     @Nonnull
     List<Showroom> getShowrooms();

@@ -1,11 +1,17 @@
 package org.technohaven.api.wrapper;
 
+import org.broadleafcommerce.common.rest.api.wrapper.APIUnwrapper;
 import org.broadleafcommerce.common.rest.api.wrapper.APIWrapper;
 import org.broadleafcommerce.common.rest.api.wrapper.BaseWrapper;
+import org.broadleafcommerce.profile.core.domain.CustomerAddress;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+import org.technohaven.api.services.CityService;
+import org.technohaven.api.services.info.ShowroomService;
 import org.technohaven.core.entities.City;
 import org.technohaven.core.entities.District;
+import org.technohaven.core.entities.Showroom;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -30,13 +36,13 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Scope("prototype")
 @XmlRootElement(name = "city")
 @XmlAccessorType(value = XmlAccessType.FIELD)
-public class CityWrapper extends BaseWrapper implements APIWrapper<City> {
+public class CityWrapper extends BaseWrapper implements APIWrapper<City>, APIUnwrapper<City> {
 
 	@XmlElement
     protected Long id;
 
 	@XmlElement
-    protected District districtId;
+    protected DistrictWrapper district;
 
 	@XmlElement
     protected String name;
@@ -52,12 +58,12 @@ public class CityWrapper extends BaseWrapper implements APIWrapper<City> {
 		this.id = id;
 	}
 
-	public District getDistrictId() {
-		return districtId;
+	public DistrictWrapper getDistrict() {
+		return district;
 	}
 
-	public void setDistrictId(District districtId) {
-		this.districtId = districtId;
+	public void setDistrict(DistrictWrapper district) {
+		this.district = district;
 	}
 
 	public String getName() {
@@ -84,9 +90,19 @@ public class CityWrapper extends BaseWrapper implements APIWrapper<City> {
 	@Override
 	public void wrapSummary(City city, HttpServletRequest request) {
 		this.id = city.getId();
-        this.districtId = city.getDistrictId();
+        this.district = (DistrictWrapper) city.getDistrict();
         this.name = city.getName();
         this.code = city.getCode();
 	}
 
+
+	@Override
+	public City unwrap(HttpServletRequest request, ApplicationContext context) {
+		CityService cityService = (CityService) context.getBean("blCityService");
+		City city = cityService.createCityFromId(this.id);
+		city.setDistrict((District) this.district);
+		city.setName(this.name);
+		city.setCode(this.code);
+		return city;
+	}
 }
