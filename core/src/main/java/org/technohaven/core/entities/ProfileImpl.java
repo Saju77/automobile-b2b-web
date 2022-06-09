@@ -25,7 +25,7 @@ public class ProfileImpl implements Profile{
     private static final Log LOG = LogFactory.getLog(ProfileImpl.class);
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 //    @GeneratedValue(generator= "ProfileId")
 //    @GenericGenerator(
 //            name="ProfileId",

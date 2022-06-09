@@ -18,7 +18,7 @@ public class CityImpl implements City{
     private static final Long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 //    @GeneratedValue(generator= "CityId")
 //    @GenericGenerator(
 //            name="CityId",

@@ -8,6 +8,8 @@ import java.util.List;
 
 public interface CityService {
 
+    City save(City city);
+
     List<City> getCities();
 
     List<City> findAllCities(int limit, int offset);

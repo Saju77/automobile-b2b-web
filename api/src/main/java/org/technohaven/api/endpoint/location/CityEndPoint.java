@@ -2,12 +2,10 @@ package org.technohaven.api.endpoint.location;
 
 import com.broadleafcommerce.rest.api.endpoint.BaseEndpoint;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.technohaven.api.services.CityService;
 import org.technohaven.api.wrapper.CitiesWrapper;
+import org.technohaven.api.wrapper.CityWrapper;
 import org.technohaven.core.entities.City;
 
 import javax.annotation.Resource;
@@ -15,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/city",  produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+@RequestMapping(value = "/city",  produces = { MediaType.APPLICATION_JSON_VALUE })
 public class CityEndPoint extends BaseEndpoint {
 
     @Resource(name = "blCityService")
@@ -31,6 +29,20 @@ public class CityEndPoint extends BaseEndpoint {
         wrapper.wrapDetails(cities, request);
         return wrapper;
     }
+
+//    @RequestMapping(value="", method = RequestMethod.POST,
+//            consumes = { MediaType.APPLICATION_JSON_VALUE })
+//    public CityWrapper addCity(HttpServletRequest request, @RequestBody CityWrapper wrapper) {
+//
+//        City city = wrapper.unwrap(request, context);
+//
+//        city = cityService.save(city);
+//
+//        CityWrapper response = (CityWrapper) context.getBean(CityWrapper.class.getName());
+//        response.wrapDetails(city, request);
+//
+//        return response;
+//    }
 
     @RequestMapping(value = "/findCities", method = RequestMethod.GET)
     public CitiesWrapper findCities(HttpServletRequest request,

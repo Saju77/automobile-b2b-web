@@ -70,15 +70,15 @@ public class DistrictWrapper extends BaseWrapper implements APIWrapper<District>
 	}
 
 	@Override
-	public void wrapDetails(District model, HttpServletRequest request) {
-
+	public void wrapDetails(District district, HttpServletRequest request) {
+		this.id = district.getId();
+		this.name = district.getName();
+		this.code = district.getCode();
 	}
 
 	@Override
 	public void wrapSummary(District district, HttpServletRequest request) {
-		this.id = district.getId();
-        this.name = district.getName();
-        this.code = district.getCode();
+		wrapDetails(district, request);
 	}
 
 	@Override

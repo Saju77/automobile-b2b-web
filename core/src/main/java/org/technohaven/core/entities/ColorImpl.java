@@ -16,7 +16,7 @@ public class ColorImpl implements Color{
     private static final Long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 //    @GeneratedValue(generator= "ColorId")
 //    @GenericGenerator(
 //            name="ColorId",

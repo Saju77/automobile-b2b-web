@@ -36,4 +36,34 @@
     <bean id="org.technohaven.core.entities.Showroom"
           class="org.technohaven.core.entities.ShowroomImpl" scope="prototype" />
 
+    <bean id="org.technohaven.core.entities.Brand"
+          class="org.technohaven.core.entities.BrandImpl" scope="prototype" />
+
+    <bean id="org.technohaven.core.entities.VehicleModel"
+          class="org.technohaven.core.entities.ModelImpl" scope="prototype" />
+
+    <bean id="org.technohaven.core.entities.Warehouse"
+          class="org.technohaven.core.entities.WarehouseImpl" scope="prototype" />
+
+    <bean id="org.technohaven.core.entities.PkgTrim"
+          class="org.technohaven.core.entities.PkgTrimImpl" scope="prototype" />
+
+    <bean id="org.technohaven.core.entities.Vehicle"
+          class="org.technohaven.core.entities.VehicleImpl" scope="prototype" />
+
+    <bean id="org.technohaven.core.entities.AuctionGrade"
+          class="org.technohaven.core.entities.AuctionGradeImpl" scope="prototype" />
+
+    <bean id="org.technohaven.core.entities.VehicleCondition"
+          class="org.technohaven.core.entities.VehicleConditionImpl" scope="prototype" />
+
+    <bean id="org.technohaven.core.entities.EngineCapacity"
+          class="org.technohaven.core.entities.EngineCapacityImpl" scope="prototype" />
+
+    <bean id="org.broadleafcommerce.common.config.domain.ModuleConfiguration"
+          class="org.broadleafcommerce.common.config.domain.ModuleConfiguration" scope="prototype" />
+
+    <bean id="org.broadleafcommerce.openadmin.server.security.domain.AdminSection"
+          class="org.technohaven.core.entities.AdminSectionImpl2"/>
+
 </beans>

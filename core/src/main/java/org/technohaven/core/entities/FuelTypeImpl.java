@@ -16,7 +16,7 @@ public class FuelTypeImpl implements FuelType{
     private static final Long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 //    @GeneratedValue(generator= "FuelTypeId")
 //    @GenericGenerator(
 //            name="FuelTypeId",

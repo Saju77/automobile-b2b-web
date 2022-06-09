@@ -19,7 +19,7 @@ public class DistrictImpl implements District{
     private static final Log LOG = LogFactory.getLog(DistrictImpl.class);
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 //    @GeneratedValue(generator= "DistrictId")
 //    @GenericGenerator(
 //            name="DistrictId",

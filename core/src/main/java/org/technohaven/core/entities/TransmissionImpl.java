@@ -16,7 +16,7 @@ public class TransmissionImpl implements Transmission{
     private static final Long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 //    @GeneratedValue(generator= "TransmissionId")
 //    @GenericGenerator(
 //            name="TransmissionId",

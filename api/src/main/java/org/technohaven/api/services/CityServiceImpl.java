@@ -25,6 +25,14 @@ public class CityServiceImpl implements CityService{
     protected IdGenerationService idGenerationService;
 
     @Override
+    public City save(City city) {
+        if (city.getId() == null) {
+            city.setId(findNextCityId());
+        }
+        return cityDao.save(city);
+    }
+
+    @Override
     public List<City> getCities() {
         return cityDao.getCities();
     }

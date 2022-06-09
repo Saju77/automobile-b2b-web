@@ -20,7 +20,7 @@ public class ShowroomImpl implements Showroom{
     private static final Log LOG = LogFactory.getLog(ShowroomImpl.class);
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 //    @GeneratedValue(generator= "ShowroomId")
 //    @GenericGenerator(
 //            name="ShowroomId",
@@ -41,20 +41,14 @@ public class ShowroomImpl implements Showroom{
     @AdminPresentation(friendlyName = "ShowroomImpl_Showroom_Phone_Number", order = 2, prominent = true, gridOrder = 2)
     protected String phoneNumber;
 
-    @ManyToOne(targetEntity = DistrictImpl.class, optional=false)
-    @JoinColumn(name = "DISTRICT_ID")
-    @AdminPresentation(friendlyName = "ShowroomImpl_Showroom_District", order = 3, prominent = true, gridOrder = 3)
-    @AdminPresentationToOneLookup()
-    protected District district;
-
     @ManyToOne(targetEntity = CityImpl.class, optional=false)
     @JoinColumn(name = "CITY_ID")
-    @AdminPresentation(friendlyName = "ShowroomImpl_Showroom_City", order = 4, prominent = true, gridOrder = 4)
+    @AdminPresentation(friendlyName = "ShowroomImpl_Showroom_City", order = 3, prominent = true, gridOrder = 3)
     @AdminPresentationToOneLookup()
     protected City city;
 
     @Column(name = "ADDRESS", nullable = false)
-    @AdminPresentation(friendlyName = "ShowroomImpl_Showroom_Address", order = 5, prominent = true, gridOrder = 5)
+    @AdminPresentation(friendlyName = "ShowroomImpl_Showroom_Address", order = 4, prominent = true, gridOrder = 4)
     protected String address;
 
     public Long getId() {
@@ -79,16 +73,6 @@ public class ShowroomImpl implements Showroom{
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
-    }
-
-    @Override
-    public District getDistrict() {
-        return district;
-    }
-
-    @Override
-    public void setDistrict(District district) {
-        this.district = district;
     }
 
     public City getCity() {

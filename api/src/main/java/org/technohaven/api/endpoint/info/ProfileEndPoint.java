@@ -3,9 +3,9 @@ package org.technohaven.api.endpoint.info;
 import com.broadleafcommerce.rest.api.endpoint.BaseEndpoint;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-import org.technohaven.api.services.info.ProfileService;
-import org.technohaven.api.wrapper.info.ProfileWrapper;
-import org.technohaven.api.wrapper.info.ProfilesWrapper;
+import org.technohaven.api.services.ProfileService;
+import org.technohaven.api.wrapper.ProfileWrapper;
+import org.technohaven.api.wrapper.ProfilesWrapper;
 import org.technohaven.core.entities.Profile;
 
 import javax.annotation.Resource;
@@ -49,25 +49,12 @@ public class ProfileEndPoint extends BaseEndpoint {
         
     }
 
-//    @ApiResponses({
-//            @ApiResponse(code = org.apache.http.HttpStatus.SC_NOT_FOUND,
-//                    message = BroadleafWebServicesException.CUSTOMER_NOT_FOUND,
-//                    response = ErrorWrapper.class
-//            )
-//    })
-//    @ApiImplicitParams(
-//            @ApiImplicitParam(name = RestApiCustomerStateFilter.CUSTOMER_ID_ATTRIBUTE,
-//                    paramType = "query",
-//                    dataType = "long",
-//                    required = true)
-//    )
     @RequestMapping(value = "/edit/{profileId}", method = RequestMethod.PUT, consumes = { MediaType.APPLICATION_JSON_VALUE })
     public ProfileWrapper updateProfile(HttpServletRequest request, @PathVariable("profileId") Long profileId, @RequestBody ProfileWrapper wrapper) {
         Profile profile = profileId != null ? profileService.findProfileById(profileId) : null;
         if (profile == null) {
             throw new RuntimeException();
         }
-        // we unwrap the update, by default this will read the customer from the database if id is specified on the request
         wrapper.setId(profileId);
         Profile update = wrapper.unwrap(request, context);
 

@@ -1,17 +1,15 @@
 package org.technohaven.api.wrapper;
 
+import com.broadleafcommerce.rest.api.wrapper.CountryWrapper;
 import org.broadleafcommerce.common.rest.api.wrapper.APIUnwrapper;
 import org.broadleafcommerce.common.rest.api.wrapper.APIWrapper;
 import org.broadleafcommerce.common.rest.api.wrapper.BaseWrapper;
-import org.broadleafcommerce.profile.core.domain.CustomerAddress;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.technohaven.api.services.CityService;
-import org.technohaven.api.services.info.ShowroomService;
 import org.technohaven.core.entities.City;
 import org.technohaven.core.entities.District;
-import org.technohaven.core.entities.Showroom;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -84,23 +82,28 @@ public class CityWrapper extends BaseWrapper implements APIWrapper<City>, APIUnw
 
 	@Override
 	public void wrapDetails(City city, HttpServletRequest request) {
-
+		this.id = city.getId();
+		if (city.getDistrict() != null) {
+			DistrictWrapper districtWrapper = (DistrictWrapper) context.getBean(DistrictWrapper.class.getName());
+			districtWrapper.wrapDetails(city.getDistrict(), request);
+			this.district = districtWrapper;
+		}
+		this.name = city.getName();
+		this.code = city.getCode();
 	}
 
 	@Override
 	public void wrapSummary(City city, HttpServletRequest request) {
-		this.id = city.getId();
-        this.district = (DistrictWrapper) city.getDistrict();
-        this.name = city.getName();
-        this.code = city.getCode();
+		wrapDetails(city, request);
 	}
-
 
 	@Override
 	public City unwrap(HttpServletRequest request, ApplicationContext context) {
 		CityService cityService = (CityService) context.getBean("blCityService");
 		City city = cityService.createCityFromId(this.id);
-		city.setDistrict((District) this.district);
+		if (this.district != null) {
+			city.setDistrict(this.district.unwrap(request, context));
+		}
 		city.setName(this.name);
 		city.setCode(this.code);
 		return city;
