@@ -47,8 +47,6 @@
         <class>org.technohaven.core.entities.AuctionGradeImpl</class>
         <class>org.technohaven.core.entities.VehicleConditionImpl</class>
         <class>org.technohaven.core.entities.EngineCapacityImpl</class>
-        <class>org.broadleafcommerce.common.config.domain.AbstractModuleConfiguration</class>
-        <class>org.technohaven.core.entities.AdminSectionImpl2</class>
         <exclude-unlisted-classes/>
     </persistence-unit>
     

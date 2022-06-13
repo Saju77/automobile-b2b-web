@@ -60,10 +60,7 @@
     <bean id="org.technohaven.core.entities.EngineCapacity"
           class="org.technohaven.core.entities.EngineCapacityImpl" scope="prototype" />
 
-    <bean id="org.broadleafcommerce.common.config.domain.ModuleConfiguration"
-          class="org.broadleafcommerce.common.config.domain.ModuleConfiguration" scope="prototype" />
-
     <bean id="org.broadleafcommerce.openadmin.server.security.domain.AdminSection"
-          class="org.technohaven.core.entities.AdminSectionImpl2"/>
+          class="org.broadleafcommerce.openadmin.server.security.domain.AdminSectionImpl" scope="prototype" />
 
 </beans>

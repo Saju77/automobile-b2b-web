@@ -531,10 +531,4 @@ INSERT INTO BLC_ADMIN_ROLE_PERMISSION_XREF (ADMIN_ROLE_ID, ADMIN_PERMISSION_ID) 
 
                                     -- End ENTITY(AdminSection)
 
----- select * from BLC_ADMIN_PERMISSION_ENTITY ORDER BY ADMIN_PERMISSION_ENTITY_ID  DESC LIMIT 1;
---INSERT INTO BLC_ADMIN_PERMISSION_ENTITY (ADMIN_PERMISSION_ENTITY_ID, CEILING_ENTITY, ADMIN_PERMISSION_ID) VALUES (-126, 'org.broadleafcommerce.common.config.domain.ModuleConfiguration', 1072);
---INSERT INTO BLC_ADMIN_PERMISSION_ENTITY (ADMIN_PERMISSION_ENTITY_ID, CEILING_ENTITY, ADMIN_PERMISSION_ID) VALUES (-127, 'org.broadleafcommerce.common.config.domain.ModuleConfiguration', 1073);
-                    -- End:- Create Admin permissions and entity permissions for your new entity
-
                                      -- 07-06-2022 Saju ahmed End
-

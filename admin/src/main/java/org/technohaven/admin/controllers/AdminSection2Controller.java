@@ -1,13 +1,16 @@
 package org.technohaven.admin.controllers;
 
+import org.broadleafcommerce.common.presentation.client.SupportedFieldType;
 import org.broadleafcommerce.openadmin.dto.ClassMetadata;
 import org.broadleafcommerce.openadmin.dto.Entity;
 import org.broadleafcommerce.openadmin.dto.SectionCrumb;
 import org.broadleafcommerce.openadmin.server.domain.PersistencePackageRequest;
 import org.broadleafcommerce.openadmin.server.security.domain.AdminModuleImpl;
+import org.broadleafcommerce.openadmin.server.security.domain.AdminSectionImpl;
 import org.broadleafcommerce.openadmin.web.controller.entity.AdminBasicEntityController;
 import org.broadleafcommerce.openadmin.web.controller.modal.ModalHeaderType;
 import org.broadleafcommerce.openadmin.web.form.entity.EntityForm;
+import org.broadleafcommerce.openadmin.web.form.entity.Field;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +21,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.Map;
+
+
+import org.broadleafcommerce.cms.field.type.FieldType;
+import org.broadleafcommerce.core.catalog.domain.ProductAdminPresentation;
+import org.broadleafcommerce.openadmin.web.form.entity.FieldGroup;
+import org.broadleafcommerce.openadmin.web.form.entity.Tab;
 
 @Controller
 @RequestMapping("/" + AdminSection2Controller.SECTION_KEY)
@@ -36,6 +45,42 @@ public class AdminSection2Controller extends AdminBasicEntityController {
     }
 
     @Override
+    protected void modifyAddEntityForm(EntityForm entityForm, Map<String, String> pathVars) {
+        super.modifyAddEntityForm(entityForm, pathVars);
+        addCustomFieldToForm(entityForm);
+    }
+
+    @Override
+    protected void modifyEntityForm(EntityForm entityForm, Map<String, String> pathVars) {
+        super.modifyAddEntityForm(entityForm, pathVars);
+        makeFieldReadOnly(entityForm);
+        addCustomFieldToForm(entityForm);
+    }
+
+    private void addCustomFieldToForm(EntityForm entityForm) {
+        // Creating a "Field" to show a link
+        Field myField = new Field()
+                .withName("module")
+                .withFriendlyName("Module ID")
+                .withRequired(true)
+//                .withValue("Image URL LinK: https://www.something.com")
+//                .withFieldType(FieldType.STRING.getType())
+                .withFieldType(FieldType.STRING.getType())
+//                .withFieldType(SupportedFieldType.STRING.toString())
+                .withOrder(2);
+
+//        Tab generalTab = entityForm.findTab(ProductAdminPresentation.TabName.General);
+//        FieldGroup generalGroup = generalTab.findGroupByKey(ProductAdminPresentation.GroupName.General);
+        FieldGroup generalGroup = entityForm.findGroup("AdminSectionImpl_Section");
+        generalGroup.addField(myField);
+    }
+
+    private void makeFieldReadOnly(EntityForm entityForm) {
+        Field field = entityForm.findField("manufacturer");
+        field.setReadOnly(true);
+    }
+
+    @Override
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String viewAddEntityForm(HttpServletRequest request, HttpServletResponse response, Model model,
             @PathVariable  Map<String, String> pathVars,
@@ -51,6 +96,18 @@ public class AdminSection2Controller extends AdminBasicEntityController {
         entityType = determineEntityType(entityType, cmd);
 
         EntityForm entityForm = formService.createEntityForm(cmd, sectionCrumbs);
+
+        String adminModuleId = entityForm.findField("module").getValue();
+        System.out.println("The value of module 1 = "+adminModuleId);
+
+//        entityForm.addField(cmd, new Field().withFieldType(SupportedFieldType.STRING.toString())
+//                .withRequired(true)
+//                .withFieldType(SupportedFieldType.ADDITIONAL_FOREIGN_KEY.name())
+//                .withName("module")
+//                .withFriendlyName("Module ID")
+//                .withOrder(3)
+//                .withOwningEntityClass("AdminSectionImpl"), "AdminSectionImpl_Section", 3, "", 0);
+//        //entityForm.addField;
 
         // We need to make sure that the ceiling entity is set to the interface and the specific entity type
         // is set to the type we're going to be creating.
@@ -85,11 +142,17 @@ public class AdminSection2Controller extends AdminBasicEntityController {
         List<SectionCrumb> sectionCrumbs = getSectionCrumbs(request, null, null);
 
         String adminModuleId = entityForm.findField("module").getValue();
-        System.out.println("adminModuleId = "+adminModuleId);
-        entityForm.findField("module").setValue(adminModuleId);
+        System.out.println("The value of module 2 = "+adminModuleId);
+
+////        String adminModuleId = entityForm.findField("module").getValue();
+//        String adminModuleId2 = entityForm.findField("module2").getValue();
+////        String tmp = adminModuleId != "null" ? adminModuleId : adminModuleId2;
+////        System.out.println("adminModuleId = "+tmp);
+//        System.out.println("adminModuleId = "+adminModuleId2);
+//        entityForm.findField("module").setValue(adminModuleId);
+
 
         ClassMetadata cmd = service.getClassMetadata(getSectionPersistencePackageRequest(sectionClassName, sectionCrumbs, pathVars)).getDynamicResultSet().getClassMetaData();
-
         extractDynamicFormFields(cmd, entityForm);
         String[] sectionCriteria = customCriteriaService.mergeSectionCustomCriteria(sectionClassName, getSectionCustomCriteria());
         Entity entity = service.addEntity(entityForm, sectionCriteria, sectionCrumbs).getEntity();

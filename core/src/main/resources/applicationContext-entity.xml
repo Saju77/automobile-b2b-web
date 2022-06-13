@@ -61,6 +61,6 @@
           class="org.technohaven.core.entities.EngineCapacityImpl" scope="prototype" />
 
     <bean id="org.broadleafcommerce.openadmin.server.security.domain.AdminSection"
-          class="org.technohaven.core.entities.AdminSectionImpl2"/>
+          class="org.broadleafcommerce.openadmin.server.security.domain.AdminSectionImpl" scope="prototype" />
 
 </beans>

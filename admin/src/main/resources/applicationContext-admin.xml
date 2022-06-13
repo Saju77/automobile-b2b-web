@@ -11,24 +11,6 @@
 
         <!-- Apply Admin entity metadata overrides here -->
 
-<!--        <mo:overrideItem ceilingEntity="org.broadleafcommerce.core.catalog.domain.Product">-->
-<!--            <mo:field name="defaultSku.description">-->
-<!--                <mo:property name="excluded" value="false" />-->
-<!--            </mo:field>-->
-<!--            <mo:field name="url">-->
-<!--                <mo:property name="excluded" value="true" />-->
-<!--            </mo:field>-->
-<!--        </mo:overrideItem>-->
-
-<!--        <mo:overrideItem ceilingEntity="org.broadleafcommerce.openadmin.server.security.domain.AdminSection">-->
-<!--            <mo:field name="module">-->
-<!--                <mo:property name="excluded" value="false" />-->
-<!--            </mo:field>-->
-<!--            <mo:field name="name">-->
-<!--                <mo:property name="excluded" value="true" />-->
-<!--            </mo:field>-->
-<!--        </mo:overrideItem>-->
-
     </mo:override>
 
     <bean id="blMessageSourceBaseNames-custom-admin" class="org.springframework.beans.factory.config.ListFactoryBean">
