@@ -26,4 +26,11 @@
         <property name="targetRef" value="blMessageSourceBaseNames" />
     </bean>
 
+    <!--16-06-2022 Saju Ahmed start-->
+    <!--Need to add those lines to enable support for JSR-303 [Now we can use @Email, @URL field validation]-->
+    <bean id="blEntityValidatorService"
+          class="org.broadleafcommerce.openadmin.server.service.persistence.validation.BeanValidationEntityValidatorServiceImpl"/>
+    <bean class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/>
+    <!--16-06-2022 Saju Ahmed end-->
+
 </beans>
