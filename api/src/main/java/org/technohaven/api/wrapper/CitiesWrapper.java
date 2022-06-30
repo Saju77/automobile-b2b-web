@@ -40,6 +40,6 @@ public class CitiesWrapper extends BaseWrapper implements APIWrapper<List<City>>
 
 	@Override
 	public void wrapSummary(List<City> model, HttpServletRequest request) {
-
+		wrapDetails(model, request);
 	}
 }

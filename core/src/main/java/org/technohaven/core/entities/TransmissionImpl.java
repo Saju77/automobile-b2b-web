@@ -16,15 +16,16 @@ public class TransmissionImpl implements Transmission{
     private static final Long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(generator= "TransmissionId")
-    @GenericGenerator(
-            name="TransmissionId",
-            strategy="org.broadleafcommerce.common.persistence.IdOverrideTableGenerator",
-            parameters = {
-                    @Parameter(name="segment_value", value="TransmissionImpl"),
-                    @Parameter(name="entity_name", value="org.technohaven.core.entities.TransmissionImpl")
-            }
-    )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(generator= "TransmissionId")
+//    @GenericGenerator(
+//            name="TransmissionId",
+//            strategy="org.broadleafcommerce.common.persistence.IdOverrideTableGenerator",
+//            parameters = {
+//                    @Parameter(name="segment_value", value="TransmissionImpl"),
+//                    @Parameter(name="entity_name", value="org.technohaven.core.entities.TransmissionImpl")
+//            }
+//    )
     @Column(name = "TRANSMISSION_ID", nullable = false)
     protected Long id;
 

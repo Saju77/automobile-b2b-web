@@ -16,15 +16,16 @@ public class FuelTypeImpl implements FuelType{
     private static final Long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(generator= "FuelTypeId")
-    @GenericGenerator(
-            name="FuelTypeId",
-            strategy="org.broadleafcommerce.common.persistence.IdOverrideTableGenerator",
-            parameters = {
-                    @Parameter(name="segment_value", value="FuelTypeImpl"),
-                    @Parameter(name="entity_name", value="org.technohaven.core.entities.FuelTypeImpl")
-            }
-    )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(generator= "FuelTypeId")
+//    @GenericGenerator(
+//            name="FuelTypeId",
+//            strategy="org.broadleafcommerce.common.persistence.IdOverrideTableGenerator",
+//            parameters = {
+//                    @Parameter(name="segment_value", value="FuelTypeImpl"),
+//                    @Parameter(name="entity_name", value="org.technohaven.core.entities.FuelTypeImpl")
+//            }
+//    )
     @Column(name = "FUEL_TYPE_ID", nullable = false)
     protected Long id;
 

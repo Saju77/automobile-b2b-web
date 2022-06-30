@@ -1,13 +1,12 @@
 package org.technohaven.core.dao;
 
+import org.broadleafcommerce.common.persistence.EntityConfiguration;
 import org.hibernate.jpa.QueryHints;
 import org.springframework.stereotype.Repository;
-import org.technohaven.core.entities.City;
-import org.technohaven.core.entities.CityImpl;
-import org.technohaven.core.entities.District;
-import org.technohaven.core.entities.DistrictImpl;
+import org.technohaven.core.entities.*;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -22,6 +21,9 @@ public class CityDaoImpl implements CityDao{
 
     @PersistenceContext(unitName="blPU")
     protected EntityManager em;
+
+    @Resource(name="blEntityConfiguration")
+    protected EntityConfiguration entityConfiguration;
 
     @Nonnull
     @Override
@@ -62,6 +64,19 @@ public class CityDaoImpl implements CityDao{
         query.setMaxResults(limit);
 
         return query.getResultList();
+    }
+
+    @Nonnull
+    @Override
+    public City readCityById(@Nonnull Long cityId) {
+        return em.find(CityImpl.class, cityId);
+    }
+
+    @Override
+    public City create() {
+        String ct = City.class.getName();
+        City city =  (City) entityConfiguration.createEntityInstance(ct);
+        return city;
     }
 
 }

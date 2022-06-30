@@ -1,6 +1,7 @@
 package org.technohaven.api.services;
 
 import org.technohaven.core.entities.District;
+import org.technohaven.core.entities.Showroom;
 
 import java.util.List;
 
@@ -19,5 +20,11 @@ public interface DistrictService {
      * @return a list of district instances that match the search criteria
      */
     List<District> findDistrictsByName(String districtName, int limit, int offset);
+
+    District createDistrictFromId(Long districtId);
+
+    public District findDistrictById(Long districtId);
+
+    public Long findNextDistrictId();
 	
 }

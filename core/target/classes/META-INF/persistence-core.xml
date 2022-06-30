@@ -39,6 +39,14 @@
         <class>org.technohaven.core.entities.ColorImpl</class>
         <class>org.technohaven.core.entities.ProfileImpl</class>
         <class>org.technohaven.core.entities.ShowroomImpl</class>
+        <class>org.technohaven.core.entities.BrandImpl</class>
+        <class>org.technohaven.core.entities.ModelImpl</class>
+        <class>org.technohaven.core.entities.WarehouseImpl</class>
+        <class>org.technohaven.core.entities.PkgTrimImpl</class>
+        <class>org.technohaven.core.entities.VehicleImpl</class>
+        <class>org.technohaven.core.entities.AuctionGradeImpl</class>
+        <class>org.technohaven.core.entities.VehicleConditionImpl</class>
+        <class>org.technohaven.core.entities.EngineCapacityImpl</class>
         <exclude-unlisted-classes/>
     </persistence-unit>
     

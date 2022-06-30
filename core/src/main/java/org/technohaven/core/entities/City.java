@@ -16,8 +16,8 @@ public interface City extends Serializable {
 
     public void setCode(int code);
     
-    District getDistrictId();
+    District getDistrict();
 
-	void setDistrictId(District districtId);
+	void setDistrict(District district);
 
 }

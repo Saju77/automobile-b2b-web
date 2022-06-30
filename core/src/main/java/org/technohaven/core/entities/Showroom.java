@@ -16,10 +16,6 @@ public interface Showroom extends Serializable {
 
     public void setPhoneNumber(String phoneNumber);
 
-    public District getDistrict();
-
-    public void setDistrict(District district);
-
     public City getCity();
 
     public void setCity(City city);

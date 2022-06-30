@@ -19,15 +19,16 @@ public class DistrictImpl implements District{
     private static final Log LOG = LogFactory.getLog(DistrictImpl.class);
 
     @Id
-    @GeneratedValue(generator= "DistrictId")
-    @GenericGenerator(
-            name="DistrictId",
-            strategy="org.broadleafcommerce.common.persistence.IdOverrideTableGenerator",
-            parameters = {
-                    @Parameter(name="segment_value", value="DistrictImpl"),
-                    @Parameter(name="entity_name", value="org.technohaven.core.entities.DistrictImpl")
-            }
-    )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(generator= "DistrictId")
+//    @GenericGenerator(
+//            name="DistrictId",
+//            strategy="org.broadleafcommerce.common.persistence.IdOverrideTableGenerator",
+//            parameters = {
+//                    @Parameter(name="segment_value", value="DistrictImpl"),
+//                    @Parameter(name="entity_name", value="org.technohaven.core.entities.DistrictImpl")
+//            }
+//    )
     @Column(name = "DISTRICT_ID", nullable = false)
     protected Long id;
 

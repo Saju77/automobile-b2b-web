@@ -1,6 +1,7 @@
 package org.technohaven.core.dao;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -9,10 +10,13 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import javax.transaction.Transactional;
 
+import org.broadleafcommerce.common.persistence.EntityConfiguration;
 import org.hibernate.jpa.QueryHints;
 import org.springframework.stereotype.Repository;
 import org.technohaven.core.entities.District;
 import org.technohaven.core.entities.DistrictImpl;
+import org.technohaven.core.entities.Showroom;
+import org.technohaven.core.entities.ShowroomImpl;
 
 import java.util.List;
 
@@ -21,6 +25,9 @@ public class DistrictDaoImpl implements DistrictDao {
 
 	@PersistenceContext(unitName="blPU")
 	protected EntityManager em;
+
+	@Resource(name="blEntityConfiguration")
+	protected EntityConfiguration entityConfiguration;
 	
   	@Nonnull
   	@Override
@@ -61,5 +68,18 @@ public class DistrictDaoImpl implements DistrictDao {
 
         return query.getResultList();
     }
+
+	@Nonnull
+	@Override
+	public District readDistrictById(@Nonnull Long districtId) {
+		return em.find(DistrictImpl.class, districtId);
+	}
+
+	@Override
+	public District create() {
+		String dist = District.class.getName();
+		District district =  (District) entityConfiguration.createEntityInstance(dist);
+		return district;
+	}
 
 }
